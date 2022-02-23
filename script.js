@@ -83,6 +83,20 @@ const displayMovements = function (movements) {
 
 displayMovements(account1.movements);
 
+// CREATE USERNAMES - based on the initials of the account  owners
+
+const createUsernames = accs => {
+  accs.forEach(acc => {
+    acc.username = acc.owner
+      .toLowerCase()
+      .split(' ')
+      .map(name => name[0])
+      .join('');
+  });
+};
+
+createUsernames(accounts);
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -93,7 +107,7 @@ displayMovements(account1.movements);
 //   ['GBP', 'Pound sterling'],
 // ]);
 
-// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
 
@@ -145,8 +159,6 @@ displayMovements(account1.movements);
 
 // FOR EACH LOOP
 
-// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
-
 // //traditional for loop
 // for (const [i, mov] of movements.entries()) {
 //   if (mov > 0) {
@@ -191,3 +203,25 @@ displayMovements(account1.movements);
 // currenciesUnique.forEach(function (value, _, map) {
 //   console.log(`${value}: ${value}`);
 // });
+
+// MAP METHOD - returns a new array with updated elements
+
+// const eurToUsd = 1.1;
+
+// const movementsUSD = movements.map(mov => mov * eurToUsd);
+
+// console.log(movementsUSD, movements);
+
+// // FOR LOOP
+
+// const movementsUSDfor = [];
+// for (const mov of movements) movementsUSDfor.push(mov * eurToUsd);
+// console.log(movementsUSDfor);
+
+// const movementsDescriptions = movements.map((mov, i) => {
+//   return `Movement ${i + 1}: You ${
+//     mov > 0 ? 'deposited' : 'withdrew'
+//   } ${Math.abs(mov)}`;
+// });
+
+// console.log(movementsDescriptions);
